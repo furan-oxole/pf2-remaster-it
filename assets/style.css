@@ -8,6 +8,13 @@ html, body { height: 100%; margin: 0; }
   --footer-h: 44px;
   --sidebar-w: 280px;
   --gap: 16px;
+  --bg-header: #1e0f0f;
+  --bg-footer: #eeeeee;
+  --bg-sidebar: #1e0f0f;
+  --bg-content: #ffffff;
+
+  --text-on-dark: #ffffff;
+  --text-on-light: #111111;
 }
 
 /* Struttura della pagina */
@@ -22,8 +29,8 @@ body{
   left: 0;
   right: 0;
   height: var(--header-h);
-  background: #111;
-  color: #fff;
+  background: var(--bg-header);
+  color: var(--text-on-dark);
   display: flex;
   align-items: center;
   padding: 0 16px;
@@ -37,8 +44,8 @@ body{
   right: 0;
   bottom: 0;
   height: var(--footer-h);
-  background: #111;
-  color: #fff;
+  background: var(--bg-footer);
+  color: var(--text-on-dark);
   display: flex;
   align-items: center;
   padding: 0 16px;
@@ -58,8 +65,8 @@ body{
 
 /* Sidebar sinistra fissa */
 #site-sidebar{
-  background: #141414;
-  color: #fff;
+  background: var(--bg-sidebar);
+  color: var(--text-on-dark);
   padding: 16px;
   overflow: auto; /* se menu lungo, scorre dentro la sidebar */
 }
@@ -68,6 +75,8 @@ body{
 #content{
   padding: 24px;
   overflow: auto;
+  background: var(--bg-content);
+  color: var(--text-on-light);
 }
 
 /* Link visibili su sfondo scuro */
