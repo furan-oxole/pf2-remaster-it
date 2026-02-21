@@ -8,9 +8,9 @@ html, body { height: 100%; margin: 0; }
   --footer-h: 44px;
   --sidebar-w: 280px;
   --gap: 16px;
-  --bg-header: #1e0f0f;
-  --bg-footer: #eeeeee;
-  --bg-sidebar: #1e0f0f;
+  --bg-header: #ff0000;
+  --bg-footer: #00ff00;
+  --bg-sidebar: #0000ff;
   --bg-content: #ffffff;
 
   --text-on-dark: #ffffff;
