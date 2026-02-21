@@ -45,7 +45,7 @@ body{
   bottom: 0;
   height: var(--footer-h);
   background: var(--bg-footer);
-  color: var(--text-on-dark);
+  color: var(--text-on-light);
   display: flex;
   align-items: center;
   padding: 0 16px;
