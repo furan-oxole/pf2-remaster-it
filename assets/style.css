@@ -95,25 +95,6 @@ body{
 
 /* ===== Mobile: sidebar collassabile ===== */
 @media (max-width: 900px){
-  /* Mostra e posiziona il bottone menu nell'angolo alto-sinistro dell'area centrale */
-  #btn-menu{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    position: sticky;
-    top: 0;
-
-    border: 0;
-    background: transparent;
-    color: var(--text-on-light);
-    font-size: 22px;
-    cursor: pointer;
-
-    padding: 8px 10px;
-    margin: -8px 0 12px -8px; /* lo porta più vicino all'angolo */
-  }
-
   /* Footer su mobile torna a tutta larghezza */
   #site-footer{
     left: 0;
@@ -139,5 +120,39 @@ body{
   /* Quando premi ☰: appare */
   body.sidebar-open #site-sidebar{
     transform: translateX(0);
+  }
+
+  /* ---- Bottone menu nel CONTENUTO (angolo alto-sinistro area centrale) ---- */
+  #content > #btn-menu{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    position: sticky;
+    top: 0;
+
+    border: 0;
+    background: transparent;
+    color: var(--text-on-light);
+    font-size: 22px;
+    cursor: pointer;
+
+    padding: 8px 10px;
+    margin: -8px 0 12px -8px;
+  }
+
+  /* ---- Bottone menu nella SIDEBAR (chiaro su sfondo scuro) ---- */
+  #site-sidebar #btn-menu{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    background: transparent;
+    color: var(--text-on-dark);
+    font-size: 22px;
+    cursor: pointer;
+
+    padding: 6px 10px;
   }
 }
