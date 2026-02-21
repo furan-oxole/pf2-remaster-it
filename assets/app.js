@@ -19,12 +19,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadPartial("#site-sidebar", `${base}/partials/sidebar.html`);
   await loadPartial("#site-footer", `${base}/partials/footer.html`);
 
+  // Sidebar destra: caricata solo se la pagina ha il contenitore
+  await loadPartial("#site-right-sidebar", `${base}/partials/right_sidebar.html`);
+
   // Click su QUALSIASI bottone menu (contenuto o sidebar)
   document.addEventListener("click", (e) => {
-    if (
-      e.target.id === "btn-menu" ||
-      e.target.classList.contains("btn-menu")
-    ) {
+    const t = e.target;
+    if (t && (t.id === "btn-menu" || t.classList.contains("btn-menu"))) {
       document.body.classList.toggle("sidebar-open");
     }
   });
