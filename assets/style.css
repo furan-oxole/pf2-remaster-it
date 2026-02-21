@@ -94,6 +94,7 @@ body{
     color: inherit;
     font-size: 22px;
     cursor: pointer;
+    display: inline-block;
   }
 
   /* La griglia non riserva più spazio alla sidebar */
