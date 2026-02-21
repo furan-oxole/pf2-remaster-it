@@ -40,7 +40,7 @@ body{
 /* Footer fisso in basso */
 #site-footer{
   position: fixed;
-  left: 0;
+  left: var(--sidebar-w);
   right: 0;
   bottom: 0;
   height: var(--footer-h);
