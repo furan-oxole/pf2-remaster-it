@@ -5,8 +5,7 @@ async function loadPartial(selector, url) {
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`${res.status} ${res.statusText} - ${url}`);
-    const html = await res.text();
-    el.innerHTML = html;
+    el.innerHTML = await res.text();
   } catch (err) {
     el.innerHTML = `<pre>Errore caricando ${url}\n${err}</pre>`;
     console.error(err);
@@ -20,17 +19,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadPartial("#site-sidebar", `${base}/partials/sidebar.html`);
   await loadPartial("#site-footer", `${base}/partials/footer.html`);
 
-  const btnMenu = document.getElementById("btn-menu");
-  if (btnMenu) {
-    btnMenu.addEventListener("click", () => {
+  // Click su QUALSIASI bottone menu (contenuto o sidebar)
+  document.addEventListener("click", (e) => {
+    if (
+      e.target.id === "btn-menu" ||
+      e.target.classList.contains("btn-menu")
+    ) {
       document.body.classList.toggle("sidebar-open");
-    });
-  }
-
-  const btnClose = document.getElementById("btn-close-sidebar");
-  if (btnClose) {
-    btnClose.addEventListener("click", () => {
-      document.body.classList.remove("sidebar-open");
-    });
-  }
+    }
+  });
 });
