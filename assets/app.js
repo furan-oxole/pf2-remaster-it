@@ -20,10 +20,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadPartial("#site-sidebar", `${base}/partials/sidebar.html`);
   await loadPartial("#site-footer", `${base}/partials/footer.html`);
 
-  const btn = document.getElementById("btn-menu");
-  if (btn) {
-    btn.addEventListener("click", () => {
+  const btnMenu = document.getElementById("btn-menu");
+  if (btnMenu) {
+    btnMenu.addEventListener("click", () => {
       document.body.classList.toggle("sidebar-open");
+    });
+  }
+
+  const btnClose = document.getElementById("btn-close-sidebar");
+  if (btnClose) {
+    btnClose.addEventListener("click", () => {
+      document.body.classList.remove("sidebar-open");
     });
   }
 });
