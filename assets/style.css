@@ -8,6 +8,7 @@ html, body { height: 100%; margin: 0; }
   --footer-h: 44px;
   --sidebar-w: 280px;
   --gap: 16px;
+
   --bg-header: #1e0f0f;
   --bg-footer: #eeeeee;
   --bg-sidebar: #1e0f0f;
@@ -20,6 +21,11 @@ html, body { height: 100%; margin: 0; }
 /* Struttura della pagina */
 body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Nascondi il bottone menu di default (desktop) */
+#btn-menu{
+  display: none;
 }
 
 /* Header fisso in alto */
@@ -37,7 +43,7 @@ body{
   z-index: 1000;
 }
 
-/* Footer fisso in basso */
+/* Footer fisso in basso (solo a destra della sidebar su desktop) */
 #site-footer{
   position: fixed;
   left: var(--sidebar-w);
@@ -52,23 +58,23 @@ body{
   z-index: 1000;
 }
 
-/* Area centrale (tra header e footer) */
+/* Area centrale (sotto header) */
 #layout{
   position: fixed;
   top: var(--header-h);
-  bottom: 0;
+  bottom: 0; /* sidebar arriva fino in fondo */
   left: 0;
   right: 0;
   display: grid;
-  grid-template-columns: var(--sidebar-w) 1fr; /* destra opzionale dopo */
+  grid-template-columns: var(--sidebar-w) 1fr;
 }
 
-/* Sidebar sinistra fissa */
+/* Sidebar sinistra */
 #site-sidebar{
   background: var(--bg-sidebar);
   color: var(--text-on-dark);
   padding: 16px;
-  overflow: auto; /* se menu lungo, scorre dentro la sidebar */
+  overflow: auto;
 }
 
 /* Contenuto centrale: è LUI che scorre */
@@ -86,15 +92,22 @@ body{
 #site-footer a{
   color: inherit;
 }
+
+/* ===== Mobile: sidebar collassabile ===== */
 @media (max-width: 900px){
-  /* Bottone menu nell'header */
+  /* Mostra il bottone menu su mobile */
   #btn-menu{
+    display: inline-block;
     border: 0;
     background: transparent;
     color: inherit;
     font-size: 22px;
     cursor: pointer;
-    display: inline-block;
+  }
+
+  /* Footer su mobile torna a tutta larghezza */
+  #site-footer{
+    left: 0;
   }
 
   /* La griglia non riserva più spazio alla sidebar */
@@ -118,7 +131,4 @@ body{
   body.sidebar-open #site-sidebar{
     transform: translateX(0);
   }
-}
-#btn-menu{
-  display: none;
 }
