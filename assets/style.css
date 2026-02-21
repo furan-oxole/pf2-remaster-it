@@ -1,1 +1,78 @@
-/* vuoto per ora */
+/* Reset minimo */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+
+/* Variabili: qui cambierai facilmente le misure */
+:root{
+  --header-h: 64px;
+  --footer-h: 44px;
+  --sidebar-w: 280px;
+  --gap: 16px;
+}
+
+/* Struttura della pagina */
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Header fisso in alto */
+#site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 1000;
+}
+
+/* Footer fisso in basso */
+#site-footer{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--footer-h);
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 1000;
+}
+
+/* Area centrale (tra header e footer) */
+#layout{
+  position: fixed;
+  top: var(--header-h);
+  bottom: var(--footer-h);
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr; /* destra opzionale dopo */
+}
+
+/* Sidebar sinistra fissa */
+#site-sidebar{
+  background: #141414;
+  color: #fff;
+  padding: 16px;
+  overflow: auto; /* se menu lungo, scorre dentro la sidebar */
+}
+
+/* Contenuto centrale: è LUI che scorre */
+#content{
+  padding: 24px;
+  overflow: auto;
+}
+
+/* Link visibili su sfondo scuro */
+#site-header a,
+#site-sidebar a,
+#site-footer a{
+  color: inherit;
+}
