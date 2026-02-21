@@ -13,8 +13,15 @@ async function loadPartial(selector, url) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadPartial("#site-header", "../partials/header.html");
-  loadPartial("#site-sidebar", "../partials/sidebar.html");
-  loadPartial("#site-footer", "../partials/footer.html");
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadPartial("#site-header", "../partials/header.html");
+  await loadPartial("#site-sidebar", "../partials/sidebar.html");
+  await loadPartial("#site-footer", "../partials/footer.html");
+
+  const btn = document.getElementById("btn-menu");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      document.body.classList.toggle("sidebar-open");
+    });
+  }
 });
