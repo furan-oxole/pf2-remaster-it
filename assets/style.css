@@ -142,7 +142,7 @@ body{
   }
 
   /* ---- Bottone menu nella SIDEBAR (chiaro su sfondo scuro) ---- */
-  #site-sidebar #btn-menu{
+  #site-sidebar .btn-menu{
     display: inline-flex;
     align-items: center;
     justify-content: center;
