@@ -14,9 +14,11 @@ async function loadPartial(selector, url) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await loadPartial("#site-header", "../partials/header.html");
-  await loadPartial("#site-sidebar", "../partials/sidebar.html");
-  await loadPartial("#site-footer", "../partials/footer.html");
+  const base = location.pathname.startsWith("/pages/") ? ".." : ".";
+
+  await loadPartial("#site-header", `${base}/partials/header.html`);
+  await loadPartial("#site-sidebar", `${base}/partials/sidebar.html`);
+  await loadPartial("#site-footer", `${base}/partials/footer.html`);
 
   const btn = document.getElementById("btn-menu");
   if (btn) {
