@@ -25,11 +25,32 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Sidebar destra: caricata solo se la pagina ha il contenitore
   await loadPartial("#site-right-sidebar", `${base}/partials/right_sidebar.html`);
 
-  // Click su QUALSIASI bottone menu (contenuto o sidebar)
+  // Click sui bottoni menu (sinistra/destra)
   document.addEventListener("click", (e) => {
     const t = e.target;
-    if (t && (t.id === "btn-menu" || t.classList.contains("btn-menu"))) {
+    if (!t) return;
+
+    // Bottone nel contenuto: controlla la SINISTRA
+    if (t.id === "btn-menu") {
       document.body.classList.toggle("sidebar-open");
+      document.body.classList.remove("right-open");
+      return;
+    }
+
+    // Bottoni dentro le sidebar: hanno class btn-menu
+    if (t.classList.contains("btn-menu")) {
+      const side = t.getAttribute("data-side");
+
+      // Se è quello della sidebar DESTRA
+      if (side === "right") {
+        document.body.classList.toggle("right-open");
+        document.body.classList.remove("sidebar-open");
+        return;
+      }
+
+      // Altrimenti: SINISTRA (default)
+      document.body.classList.toggle("sidebar-open");
+      document.body.classList.remove("right-open");
     }
   });
 });
