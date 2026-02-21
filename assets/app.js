@@ -13,7 +13,10 @@ async function loadPartial(selector, url) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const base = location.pathname.startsWith("/pages/") ? ".." : ".";
+  // Calcola quante cartelle profonde sei (root=0, /giocatore/=1, /pages/=1, ecc.)
+  // E costruisce un base path corretto per raggiungere la root del sito.
+  const depth = location.pathname.split("/").length - 2;
+  const base = depth > 0 ? "../".repeat(depth).replace(/\/$/, "") : ".";
 
   await loadPartial("#site-header", `${base}/partials/header.html`);
   await loadPartial("#site-sidebar", `${base}/partials/sidebar.html`);
