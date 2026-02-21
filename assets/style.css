@@ -6,7 +6,7 @@ html, body { height: 100%; margin: 0; }
 :root{
   --header-h: 64px;
   --footer-h: 44px;
-  --sidebar-w: 230px;
+  --sidebar-w: 250px;
   --gap: 16px;
 
   --bg-header: #1e0f0f;
