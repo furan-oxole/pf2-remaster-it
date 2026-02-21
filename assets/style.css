@@ -6,7 +6,10 @@ html, body { height: 100%; margin: 0; }
 :root{
   --header-h: 64px;
   --footer-h: 44px;
-  --sidebar-w: 250px;
+
+  --sidebar-w: 250px;         /* sinistra */
+  --right-sidebar-w: 250px;   /* destra (puoi ridurla quando vuoi) */
+
   --gap: 16px;
 
   --bg-header: #1e0f0f;
@@ -28,7 +31,7 @@ body{
   display: none;
 }
 
-/* Bottone menu dentro la sidebar (classe): nascosto di default (desktop) */
+/* Bottone menu dentro le sidebar (classe): nascosto di default (desktop) */
 .btn-menu{
   display: none;
 }
@@ -48,7 +51,7 @@ body{
   z-index: 1000;
 }
 
-/* Footer fisso in basso (solo a destra della sidebar su desktop) */
+/* Footer fisso in basso (parte dopo la sidebar sinistra) */
 #site-footer{
   position: fixed;
   left: var(--sidebar-w);
@@ -71,11 +74,26 @@ body{
   left: 0;
   right: 0;
   display: grid;
+
+  /* default: 2 colonne (sinistra + contenuto) */
   grid-template-columns: var(--sidebar-w) 1fr;
+}
+
+/* Se la pagina ha la sidebar destra, passiamo a 3 colonne */
+#layout:has(#site-right-sidebar){
+  grid-template-columns: var(--sidebar-w) 1fr var(--right-sidebar-w);
 }
 
 /* Sidebar sinistra */
 #site-sidebar{
+  background: var(--bg-sidebar);
+  color: var(--text-on-dark);
+  padding: 16px;
+  overflow: auto;
+}
+
+/* Sidebar destra */
+#site-right-sidebar{
   background: var(--bg-sidebar);
   color: var(--text-on-dark);
   padding: 16px;
@@ -94,23 +112,24 @@ body{
 /* Link visibili su sfondo scuro */
 #site-header a,
 #site-sidebar a,
+#site-right-sidebar a,
 #site-footer a{
   color: inherit;
 }
 
-/* ===== Mobile: sidebar collassabile ===== */
+/* ===== Mobile: sidebar collassabili ===== */
 @media (max-width: 900px){
   /* Footer su mobile torna a tutta larghezza */
   #site-footer{
     left: 0;
   }
 
-  /* La griglia non riserva più spazio alla sidebar */
+  /* Layout a 1 colonna su mobile */
   #layout{
     grid-template-columns: 1fr;
   }
 
-  /* Sidebar diventa un pannello a scomparsa */
+  /* Sidebar sinistra: pannello a scomparsa */
   #site-sidebar{
     position: fixed;
     top: var(--header-h);
@@ -122,8 +141,25 @@ body{
     z-index: 1100;
   }
 
-  /* Quando premi ☰: appare */
+  /* Sidebar destra: pannello a scomparsa (da destra) */
+  #site-right-sidebar{
+    position: fixed;
+    top: var(--header-h);
+    bottom: var(--footer-h);
+    right: 0;
+    width: var(--right-sidebar-w);
+    transform: translateX(100%);
+    transition: transform 160ms ease;
+    z-index: 1100;
+  }
+
+  /* Quando premi ☰ (sinistra): appare */
   body.sidebar-open #site-sidebar{
+    transform: translateX(0);
+  }
+
+  /* Quando attiveremo la destra: appare */
+  body.right-open #site-right-sidebar{
     transform: translateX(0);
   }
 
@@ -146,8 +182,9 @@ body{
     margin: -8px 0 12px -8px;
   }
 
-  /* ---- Bottone menu nella SIDEBAR (chiaro su sfondo scuro) ---- */
-  #site-sidebar .btn-menu{
+  /* ---- Bottone menu nelle SIDEBAR (chiaro su sfondo scuro) ---- */
+  #site-sidebar .btn-menu,
+  #site-right-sidebar .btn-menu{
     display: inline-flex;
     align-items: center;
     justify-content: center;
