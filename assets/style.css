@@ -118,3 +118,6 @@ body{
     transform: translateX(0);
   }
 }
+#btn-menu{
+  display: none;
+}
