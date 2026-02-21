@@ -24,6 +24,7 @@ async function loadPartial(selector, url) {
 
 // Quando la pagina è pronta, carica i partial comuni
 document.addEventListener("DOMContentLoaded", () => {
+  document.body.insertAdjacentHTML("afterbegin", "<div>JS OK</div>");
   // Carica header comune
   loadPartial("#site-header", "../partials/header.html");
   // Carica sidebar sinistra comune
