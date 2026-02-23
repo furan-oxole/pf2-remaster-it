@@ -12,13 +12,17 @@ html, body { height: 100%; margin: 0; }
 
   --gap: 16px;
 
-  --bg-header: #281414;
+  --bg-header: #1e0f0f;
   --bg-footer: #eeeeee;
   --bg-sidebar: #1e0f0f;
   --bg-content: #ffffff;
 
   --text-on-dark: #ffffff;
   --text-on-light: #111111;
+
+  /* === DIVISORE SOTTO HEADER === */
+  --header-divider-h: 5px;         /* spessore riga/fascia */
+  --bg-header-divider: #FAE196;    /* colore riga/fascia */
 }
 
 /* Struttura della pagina */
@@ -49,6 +53,20 @@ body{
   align-items: center;
   padding: 0 16px;
   z-index: 1000;
+
+  /* necessario per posizionare la fascia sotto */
+  position: fixed;
+}
+
+/* Fascia/riga di separazione sotto l'header */
+#site-header::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--header-divider-h);
+  background: var(--bg-header-divider);
 }
 
 /* Footer fisso in basso (parte dopo la sidebar sinistra) */
