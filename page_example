@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TITOLO PAGINA - PF2 Remaster IT</title>
 
-  <!-- Stili e logica comuni -->
-  <link rel="stylesheet" href="/assets/style.css?v=4" />
-  <script defer src="/assets/app.js?v=4"></script>
+  <link rel="stylesheet" href="/assets/style.css?v=6" />
+  <script defer src="/assets/app.js?v=6"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -16,23 +19,23 @@
 
   <!-- Layout principale -->
   <div id="layout">
-    <!-- Sidebar sinistra comune -->
+    
+    <!-- Sidebar sinistra -->
     <div id="site-sidebar"></div>
 
-    <!-- Contenuto SPECIFICO della pagina -->
+    <!-- Contenuto -->
     <main id="content">
-      <!-- Bottone menu (solo mobile) -->
       <button id="btn-menu" type="button" aria-label="Apri/chiudi menu">☰</button>
 
-      <!-- Titolo della pagina -->
       <h1>Titolo della pagina</h1>
-
-      <!-- Contenuto -->
       <p>
         Qui va il contenuto della pagina della wiki.
       </p>
-
     </main>
+
+    <!-- Sidebar destra -->
+    <aside id="site-right-sidebar"></aside>
+
   </div>
 
   <!-- Footer comune -->
