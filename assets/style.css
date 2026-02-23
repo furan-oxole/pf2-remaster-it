@@ -2,10 +2,10 @@
 html, body { height: 100%; margin: 0; }
 
 :root{
-  --header-h: 96px;
-  --footer-h: 44px;
-  --sidebar-w: 250px;
-  --right-sidebar-w: 250px;
+  --header-h: 100px;
+  --footer-h: 50px;
+  --sidebar-w: 200px;
+  --right-sidebar-w: 200px;
 
   --gap: 16px;
 
