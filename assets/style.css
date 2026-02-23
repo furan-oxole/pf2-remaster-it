@@ -20,9 +20,8 @@ html, body { height: 100%; margin: 0; }
   --header-divider-h: 3px;
   --bg-header-divider: #C89664;
 
-  /* === HEADER: LOGO + TITOLO CENTRALE === */
-  --header-logo-h: 90px;     /* altezza logo dentro header (<= --header-h) */
-  --header-title-size: 34px; /* grandezza titolo desktop */
+  /* === HEADER: SOLO LOGO === */
+  --header-logo-h: 90px; /* <= --header-h */
 }
 
 body{
@@ -39,7 +38,7 @@ body{
   display: none;
 }
 
-/* Header fisso in alto */
+/* ================= HEADER ================= */
 #site-header{
   position: fixed;
   top: 0;
@@ -48,13 +47,12 @@ body{
   height: var(--header-h);
   background: var(--bg-header);
   color: var(--text-on-dark);
+
   display: flex;
   align-items: center;
+
   padding: 0 16px;
   z-index: 1000;
-
-  /* per la fascia sotto e per centrare bene */
-  position: fixed;
 }
 
 /* Fascia/riga di separazione sotto l'header */
@@ -68,13 +66,12 @@ body{
   background: var(--bg-header-divider);
 }
 
-/* --- Header layout: sinistra / centro / destra --- */
+/* Logo */
 #site-header .header-left{
   display: flex;
   align-items: center;
   text-decoration: none;
   color: inherit;
-  flex: 0 0 auto;
 }
 
 #site-header .header-logo{
@@ -83,34 +80,7 @@ body{
   display: block;
 }
 
-#site-header .header-center{
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-}
-
-#site-header .header-title{
-  font-size: var(--header-title-size);
-  font-weight: 700;
-  line-height: 1;
-  text-align: center;
-
-  /* evita che sfori */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 12px;
-}
-
-/* lato destro vuoto: mantiene il titolo davvero centrato */
-#site-header .header-right{
-  flex: 0 0 auto;
-  width: var(--header-logo-h);
-}
-
-/* Footer fisso in basso (parte dopo la sidebar sinistra) */
+/* ================= FOOTER ================= */
 #site-footer{
   position: fixed;
   left: var(--sidebar-w);
@@ -119,26 +89,26 @@ body{
   height: var(--footer-h);
   background: var(--bg-footer);
   color: var(--text-on-light);
+
   display: flex;
   align-items: center;
   padding: 0 16px;
+
   z-index: 1000;
 }
 
-/* Area centrale (sotto header) */
+/* ================= LAYOUT ================= */
 #layout{
   position: fixed;
   top: var(--header-h);
   bottom: 0;
   left: 0;
   right: 0;
-  display: grid;
 
-  /* default: 2 colonne (sinistra + contenuto) */
+  display: grid;
   grid-template-columns: var(--sidebar-w) 1fr;
 }
 
-/* Se la pagina ha la sidebar destra, passiamo a 3 colonne */
 #layout:has(#site-right-sidebar){
   grid-template-columns: var(--sidebar-w) 1fr var(--right-sidebar-w);
 }
@@ -159,7 +129,7 @@ body{
   overflow: auto;
 }
 
-/* Contenuto centrale: è LUI che scorre */
+/* Contenuto centrale */
 #content{
   padding: 24px;
   overflow: auto;
@@ -176,25 +146,21 @@ body{
   color: inherit;
 }
 
-/* ===== Mobile: sidebar collassabili ===== */
+/* ================= MOBILE ================= */
 @media (max-width: 900px){
-  /* Footer su mobile torna a tutta larghezza */
   #site-footer{
     left: 0;
   }
 
-  /* Layout a 1 colonna su mobile */
   #layout{
     grid-template-columns: 1fr;
   }
 
-  /* Titolo più piccolo su mobile */
   :root{
     --header-logo-h: 64px;
-    --header-title-size: 24px;
   }
 
-  /* Sidebar sinistra: pannello a scomparsa */
+  /* Sidebar sinistra */
   #site-sidebar{
     position: fixed;
     top: var(--header-h);
@@ -206,7 +172,7 @@ body{
     z-index: 1100;
   }
 
-  /* Sidebar destra: pannello a scomparsa (da destra) */
+  /* Sidebar destra */
   #site-right-sidebar{
     position: fixed;
     top: var(--header-h);
@@ -218,17 +184,15 @@ body{
     z-index: 1100;
   }
 
-  /* Quando premi ☰ (sinistra): appare */
   body.sidebar-open #site-sidebar{
     transform: translateX(0);
   }
 
-  /* Quando attiveremo la destra: appare */
   body.right-open #site-right-sidebar{
     transform: translateX(0);
   }
 
-  /* ---- Bottone menu nel CONTENUTO (angolo alto-sinistro area centrale) ---- */
+  /* Bottone menu nel contenuto */
   #content > #btn-menu{
     display: inline-flex;
     align-items: center;
@@ -247,7 +211,7 @@ body{
     margin: -8px 0 12px -8px;
   }
 
-  /* ---- Bottone menu nelle SIDEBAR (chiaro su sfondo scuro) ---- */
+  /* Bottone menu nelle sidebar */
   #site-sidebar .btn-menu,
   #site-right-sidebar .btn-menu{
     display: inline-flex;
