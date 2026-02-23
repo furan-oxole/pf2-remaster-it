@@ -19,6 +19,10 @@ html, body { height: 100%; margin: 0; }
 
   --header-divider-h: 3px;
   --bg-header-divider: #C89664;
+
+  /* === HEADER: LOGO + TITOLO CENTRALE === */
+  --header-logo-h: 90px;     /* altezza logo dentro header (<= --header-h) */
+  --header-title-size: 34px; /* grandezza titolo desktop */
 }
 
 body{
@@ -49,7 +53,7 @@ body{
   padding: 0 16px;
   z-index: 1000;
 
-  /* necessario per posizionare la fascia sotto */
+  /* per la fascia sotto e per centrare bene */
   position: fixed;
 }
 
@@ -62,6 +66,48 @@ body{
   width: 100%;
   height: var(--header-divider-h);
   background: var(--bg-header-divider);
+}
+
+/* --- Header layout: sinistra / centro / destra --- */
+#site-header .header-left{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  flex: 0 0 auto;
+}
+
+#site-header .header-logo{
+  height: var(--header-logo-h);
+  width: auto;
+  display: block;
+}
+
+#site-header .header-center{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+#site-header .header-title{
+  font-size: var(--header-title-size);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+
+  /* evita che sfori */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 12px;
+}
+
+/* lato destro vuoto: mantiene il titolo davvero centrato */
+#site-header .header-right{
+  flex: 0 0 auto;
+  width: var(--header-logo-h);
 }
 
 /* Footer fisso in basso (parte dopo la sidebar sinistra) */
@@ -140,6 +186,12 @@ body{
   /* Layout a 1 colonna su mobile */
   #layout{
     grid-template-columns: 1fr;
+  }
+
+  /* Titolo più piccolo su mobile */
+  :root{
+    --header-logo-h: 64px;
+    --header-title-size: 24px;
   }
 
   /* Sidebar sinistra: pannello a scomparsa */
