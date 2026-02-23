@@ -14,8 +14,8 @@ html, body { height: 100%; margin: 0; }
   --bg-sidebar: #1e0f0f;
   --bg-content: #ffffff;
 
-  --text-on-dark: #ffffff;
-  --text-on-light: #111111;
+  --text-on-dark: #fffff5;
+  --text-on-light: #281414;
 
   --header-divider-h: 3px;
   --bg-header-divider: #C89664;
