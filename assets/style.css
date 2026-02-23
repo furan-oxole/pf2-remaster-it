@@ -12,7 +12,7 @@ html, body { height: 100%; margin: 0; }
 
   --gap: 16px;
 
-  --bg-header: #1e0f0f;
+  --bg-header: #281414;
   --bg-footer: #eeeeee;
   --bg-sidebar: #1e0f0f;
   --bg-content: #ffffff;
@@ -21,8 +21,8 @@ html, body { height: 100%; margin: 0; }
   --text-on-light: #111111;
 
   /* === DIVISORE SOTTO HEADER === */
-  --header-divider-h: 5px;         /* spessore riga/fascia */
-  --bg-header-divider: #FAE196;    /* colore riga/fascia */
+  --header-divider-h: 3px;         /* spessore riga/fascia */
+  --bg-header-divider: #C89664;    /* colore riga/fascia */
 }
 
 /* Struttura della pagina */
