@@ -4,7 +4,7 @@ html, body { height: 100%; margin: 0; }
 
 /* Variabili: qui cambierai facilmente le misure */
 :root{
-  --header-h: 64px;
+  --header-h: 96px;
   --footer-h: 44px;
 
   --sidebar-w: 250px;         /* sinistra */
