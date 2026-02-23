@@ -4,8 +4,8 @@ html, body { height: 100%; margin: 0; }
 :root{
   --header-h: 100px;
   --footer-h: 50px;
-  --sidebar-w: 200px;
-  --right-sidebar-w: 200px;
+  --sidebar-w: 250px;
+  --right-sidebar-w: 250px;
 
   --gap: 16px;
 
