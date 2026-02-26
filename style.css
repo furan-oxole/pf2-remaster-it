@@ -86,21 +86,22 @@ body{
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 0 12px;
+  padding-left: 48px;
 }
 
 #site-header .header-inner{
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 #site-header .header-home{
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100%;
 }
 
@@ -192,6 +193,11 @@ body{
 ========================= */
 .right-header-gap{
   height: var(--header-h);
+  background: #d4af37;
+}
+
+.right-handle-gap{
+  height: 48px;
   background: var(--bg-rightbar);
 }
 
@@ -203,9 +209,9 @@ body{
 ========================= */
 .right-handle{
   position: absolute;
-  top: 0;
+  top: var(--header-h);
   left: 0;
-  height: var(--header-h);
+  height: 48px;
   width: var(--peek-right);
   display: flex;
   align-items: center;
@@ -235,7 +241,7 @@ body{
 #site-rightbar .right-handle{ display: none; }
 
 .right-top{
-  background: #145a32;
+  background: var(--bg-rightbar);
   border-bottom: 4px solid rgba(0,0,0,0.25);
 }
 
