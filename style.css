@@ -5,9 +5,10 @@
 html, body { height: 100%; margin: 0; }
 
 :root{
+   
   --header-h: 100px;
   --footer-h: 25px;
-
+   --logo-w: 220px; /* metti la larghezza reale del tuo logo, aggiusta se serve */
   --leftbar-w: 100px;
   --rightbar-w: 250px;
 
@@ -189,21 +190,19 @@ body{
   position: fixed;
   top: 0;
 
-  /* allineato alla larghezza del leftcorner,
-     24px prima del suo bordo destro */
-  left: calc(var(--leftcorner-w) - 24px);
+  /* bordo destro del logo = (leftcorner-w - 24px) */
+  left: calc(var(--leftcorner-w) - 24px - var(--logo-w));
 
   height: var(--header-h);
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-
   z-index: 4000;
 }
 
 .left-logo{
-  height: var(--header-logo-h);
-  width: auto;
+  width: var(--logo-w);
+  height: auto;
   display: block;
 }
 
