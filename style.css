@@ -5,14 +5,14 @@ html, body { height: 100%; margin: 0; }
 	--footer-h: 50px;				
 	--sidebar-w: 250px;				
 	--gap: 16px;				
-	--bg-header: #05320F;				
+	--bg-header: #062D0E;				
 	--bg-footer: #f5f5f5;				
-	--bg-sidebar: #05320F;				
+	--bg-sidebar: #062D0E;				
 	--bg-content: #ffffff;				
 	--text-on-dark: #fffff5;				
 	--text-on-light: #281414;				
 	--header-divider-h: 3px;				
-	--bg-header-divider: #05320F;				
+	--bg-header-divider: #E1C864;				
 	--header-logo-h: 90px;				
 }					
 body {font-family: "Crimson Text", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }					
