@@ -13,7 +13,7 @@ html, body { height: 100%; margin: 0; }
 	--text-on-light: #281414;				
 	--header-divider-h: 3px;				
 	--bg-header-divider: #C89664;				
-	--header-logo-h: 140px;				
+	--header-logo-h: 90px;				
 }					
 body {font-family: "Crimson Text", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }					
 #btn-menu { display: none; }					
