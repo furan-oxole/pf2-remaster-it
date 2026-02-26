@@ -109,6 +109,7 @@ body{
   height: var(--header-logo-h);
   width: auto;
   display: block;
+   z-index: 4000;
 }
 
 /* Link coerenti */
