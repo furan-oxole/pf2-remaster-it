@@ -192,22 +192,22 @@ body{
 .left-logo-link{
   position: fixed;
   top: 0;
-  left: 0;
 
-  transform: translateX(calc(var(--leftcorner-w) - 24px)) translateX(-100%);
+  /* il logo PARTE 24px prima della fine del leftcorner */
+  left: calc(var(--leftcorner-w) - 24px);
 
   height: var(--header-h);
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
   z-index: 4000;
+
+  transform: none; /* importante */
 }
 
 .left-logo{
-  /* se vuoi forzare una larghezza fissa, lascia questa riga,
-     altrimenti puoi commentarla e farlo scalare solo in altezza */
-  width: var(--logo-w);
-  height: auto;
+  height: var(--header-logo-h);
+  width: auto;
   display: block;
 }
 
@@ -419,6 +419,7 @@ body{
 
   /* logo: stesso allineamento ma considerando la linguetta sinistra */
   .left-logo-link{
-    transform: translateX(calc(var(--leftcorner-w) - 24px + var(--peek-left))) translateX(-100%);
-  }
+     left: calc(var(--leftcorner-w) - 24px + var(--peek-left));
+     transform: none;
+   }
 }
