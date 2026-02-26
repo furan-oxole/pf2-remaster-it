@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 	const depth = location.pathname.split("/").length - 2;					
 	const base = depth > 0 ? "../".repeat(depth).replace(/\/$/, "") : ".";					
 	await loadPartial("#site-header", `${base}/partials/header.html`);					
-	await loadPartial("#site-sidebar", `${base}/partials/sidebar.html`);									
+	await loadPartial("#site-leftbar", `${base}/partials/leftbar.html`);					
+	await loadPartial("#site-rightbar", `${base}/partials/rightbar.html`);					
 	document.addEventListener("click", (e) => {					
 		const t = e.target;				
 		if (!t) return;				
