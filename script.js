@@ -21,18 +21,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadPartial("#site-rightbar", `${base}partials/rightbar.html`);
 
   document.addEventListener("click", (e) => {
-    const btn = e.target.closest("#btn-left, #btn-right, .btn-left, .btn-right");
-    if (!btn) return;
-
-    if (btn.id === "btn-left" || btn.classList.contains("btn-left")) {
-      document.body.classList.toggle("leftbar-open");
-      document.body.classList.remove("rightbar-open");
+    const btnRight = e.target.closest("#btn-right, .btn-right");
+    if (btnRight) {
+      document.body.classList.toggle("rightbar-open");
       return;
     }
 
-    if (btn.id === "btn-right" || btn.classList.contains("btn-right")) {
-      document.body.classList.toggle("rightbar-open");
-      document.body.classList.remove("leftbar-open");
+    // chiudi se clicchi fuori (solo mobile)
+    if (window.matchMedia("(max-width: 900px)").matches) {
+      const insideRight = e.target.closest("#site-rightbar");
+      if (!insideRight) document.body.classList.remove("rightbar-open");
     }
   });
 });
