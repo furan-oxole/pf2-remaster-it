@@ -72,7 +72,7 @@ body {font-family: "Crimson Text", system-ui, -apple-system, Segoe UI, Roboto, A
 	overflow: auto;				
 }					
 #content{					
-	padding: 24px;				
+	padding: 16px;				
 	overflow: auto;				
 	background: var(--bg-content);				
 	color: var(--text-on-light);				
