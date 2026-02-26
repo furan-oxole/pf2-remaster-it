@@ -419,7 +419,7 @@ body{
 
   /* logo: stesso allineamento ma considerando la linguetta sinistra */
   .left-logo-link{
-     left: calc(var(--leftcorner-w) - 24px + var(--peek-left));
+     left: calc(var(--leftcorner-w) - 24px);
      transform: none;
    }
 }
