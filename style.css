@@ -93,7 +93,8 @@ body {font-family: "Crimson Text", system-ui, -apple-system, Segoe UI, Roboto, A
 	#site-sidebar{				
 		position: fixed;			
 		top: var(--header-h);			
-		left: 0;			
+		left: 0;
+		bottom: 0;
 		width: var(--sidebar-w);			
 		transform: translateX(-100%);			
 		transition: transform 160ms ease;			
