@@ -1,143 +1,195 @@
-* { box-sizing: border-box; }				
-html, body { height: 100%; margin: 0; }				
-:root{				
-	--header-h: 100px;			
-	--footer-h: 25px;			
-	--leftbar-w: 250px;			
-	--rightbar-w: 250px;			
-	--bg-header: #062D0E;			
-	--bg-footer: #f5f5f5;			
-	--bg-leftbar: #062D0E;			
-	--bg-rightbar: #062D0E;			
-	--bg-content: #ffffff;			
-	--text-on-dark: #ffffff;			
-	--text-on-light: #231F20;			
-	--header-logo-h: 90px;			
-}				
-body {font-family: "Crimson Text", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }				
-#site-header{				
-	position: fixed;			
-	top: 0;			
-	left: 0;			
-	right: 0;			
-	height: var(--header-h);			
-	background: var(--bg-header);			
-	color: var(--text-on-dark);			
-	display: flex;			
-	align-items: center;			
-	padding: 0 5px;			
-	z-index: 1000;			
-	background-image: url("assets/bghead.png");			
-	background-repeat: repeat-x;			
-	background-position: left top;			
-}				
-#site-header .header-left{				
-	display: flex;			
-	align-items: center;			
-	text-decoration: none;			
-	color: inherit;			
-}				
-#site-header .header-right{				
-	display: flex;			
-	align-items: center;			
-	text-decoration: none;			
-	color: inherit;			
-}				
-#site-header .header-logo{				
-	height: var(--header-logo-h);			
-	width: auto;			
-	display: block;			
-}				
-#site-footer{				
-	position: fixed;			
-	left: var(--sidebar-w);			
-	right: 0;			
-	bottom: 0;			
-	height: var(--footer-h);			
-	background: var(--bg-footer);			
-	color: var(--text-on-light);			
-	display: flex;			
-	align-items: center;			
-	padding: 0 16px;			
-	z-index: 1000;			
-}				
-#layout{				
-	position: fixed;			
-	top: var(--header-h);			
-	bottom: 0;			
-	left: 0;			
-	right: 0;			
-	display: grid;			
-	grid-template-columns: var(--sidebar-w) 1fr;			
-}				
-#site-leftbar{				
-	background: var(--bg-sidebar);			
-	color: var(--text-on-dark);			
-	padding: 16px;			
-	overflow: auto;			
-}				
-#site-rightbar{				
-	background: var(--bg-sidebar);			
-	color: var(--text-on-dark);			
-	padding: 16px;			
-	overflow: auto;			
-}				
-#content{				
-	padding: 16px;			
-	overflow: auto;			
-	background: var(--bg-content);			
-	color: var(--text-on-light);			
-	padding-bottom: calc(24px + var(--footer-h));			
-}				
-#site-header a, #site-sidebar a, #site-footer a { color: inherit; }				
-@media (max-width: 900px){				
-	#site-footer{ left: 24; }			
-	#layout{ grid-template-columns: 1fr; }			
-	#site-leftbar{			
-		position: fixed;		
-		top: var(--header-h);		
-		left: 0;		
-		bottom: 0;		
-		width: var(--leftbar-w);		
-		transform: translateX(-75%);		
-		transition: transform 160ms ease;		
-		z-index: 1100;		
-	}			
-	#site-rightbar{			
-		position: fixed;		
-		top: var(--header-h);		
-		right: 0;		
-		bottom: 0;		
-		width: var(--rightbar-w);		
-		transform: translateX(75%);		
-		transition: transform 160ms ease;		
-		z-index: 1100;		
-	}			
-	body.rightbar-open #site-rightbar{ transform: translateX(0); }			
-	#content > #btn-menu{			
-		padding: 6px 10px;		
-		display: inline-flex;		
-		align-items: center;		
-		justify-content: center;		
-		position: sticky;		
-		top: 0;		
-		border: 0;		
-		background: transparent;		
-		color: var(--text-on-light);		
-		font-size: 22px;		
-		cursor: pointer;		
-		padding: 8px 10px;		
-		margin: -8px 0 12px -8px;		
-	}			
-	#site-rightbar.btn-menu {			
-		display: inline-flex;		
-		align-items: center;		
-		justify-content: center;		
-		border: 0;		
-		background: transparent;		
-		color: var(--text-on-dark);		
-		font-size: 22px;		
-		cursor: pointer;		
-		padding: 6px 10px;		
-	}			
-}				
+/* =========================
+   BASE
+========================= */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+
+:root{
+  --header-h: 100px;
+  --footer-h: 25px;
+
+  --leftbar-w: 250px;
+  --rightbar-w: 250px;
+
+  --bg-header: #062D0E;
+  --bg-footer: #f5f5f5;
+  --bg-leftbar: #062D0E;
+  --bg-rightbar: #062D0E;
+  --bg-content: #ffffff;
+
+  --text-on-dark: #ffffff;
+  --text-on-light: #231F20;
+
+  --header-logo-h: 90px;
+}
+
+body{
+  font-family: "Crimson Text", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text-on-light);
+  background: #e9e4d8; /* base “carta” fuori dal contenuto */
+}
+
+/* =========================
+   HEADER (placeholder: contenuto inserito via JS/partial)
+========================= */
+#site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  background: var(--bg-header);
+  color: var(--text-on-dark);
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  z-index: 1000;
+
+  background-image: url("assets/bghead.png");
+  background-repeat: repeat-x;
+  background-position: left top;
+}
+
+#site-header .header-left,
+#site-header .header-right{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+#site-header .header-logo{
+  height: var(--header-logo-h);
+  width: auto;
+  display: block;
+}
+
+/* =========================
+   LAYOUT (3 colonne: left / content / right)
+   Nota: bottom = footer-h per evitare sovrapposizione
+========================= */
+#layout{
+  position: fixed;
+  top: var(--header-h);
+  bottom: var(--footer-h);
+  left: 0;
+  right: 0;
+
+  display: grid;
+  grid-template-columns: var(--leftbar-w) 1fr var(--rightbar-w);
+  min-height: 0; /* importante per overflow in grid */
+}
+
+/* =========================
+   LEFTBAR / RIGHTBAR
+========================= */
+#site-leftbar{
+  background: var(--bg-leftbar);
+  color: var(--text-on-dark);
+  padding: 16px;
+  overflow: auto;
+  min-height: 0;
+}
+
+#site-rightbar{
+  background: var(--bg-rightbar);
+  color: var(--text-on-dark);
+  padding: 16px;
+  overflow: auto;
+  min-height: 0;
+}
+
+/* =========================
+   CONTENT
+========================= */
+#content{
+  background: var(--bg-content);
+  color: var(--text-on-light);
+  padding: 16px;
+  overflow: auto;
+  min-height: 0;
+}
+
+/* Link coerenti */
+#site-header a,
+#site-leftbar a,
+#site-rightbar a,
+#site-footer a{
+  color: inherit;
+}
+
+/* =========================
+   FOOTER
+========================= */
+#site-footer{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--footer-h);
+
+  background: var(--bg-footer);
+  color: var(--text-on-light);
+
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  z-index: 1000;
+}
+
+/* =========================
+   RESPONSIVE
+   - layout diventa 1 colonna
+   - left/right diventano pannelli a scomparsa
+========================= */
+@media (max-width: 900px){
+  #layout{
+    grid-template-columns: 1fr;
+  }
+
+  #site-leftbar{
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    bottom: var(--footer-h);
+    width: var(--leftbar-w);
+    transform: translateX(-75%);
+    transition: transform 160ms ease;
+    z-index: 1100;
+  }
+
+  #site-rightbar{
+    position: fixed;
+    top: var(--header-h);
+    right: 0;
+    bottom: var(--footer-h);
+    width: var(--rightbar-w);
+    transform: translateX(75%);
+    transition: transform 160ms ease;
+    z-index: 1100;
+  }
+
+  body.leftbar-open #site-leftbar{ transform: translateX(0); }
+  body.rightbar-open #site-rightbar{ transform: translateX(0); }
+
+  /* Pulsante menu se lo inserisci nel contenuto */
+  #content > #btn-menu{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    background: transparent;
+    color: var(--text-on-light);
+
+    font-size: 22px;
+    cursor: pointer;
+
+    padding: 8px 10px;
+    margin: -8px 0 12px -8px;
+
+    position: sticky;
+    top: 0;
+  }
+}
