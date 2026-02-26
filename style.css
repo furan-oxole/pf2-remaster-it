@@ -78,7 +78,9 @@ body{
   height: var(--header-h);
   background: var(--bg-header);
   color: var(--text-on-dark);
-  z-index: 1000;
+
+  /* header deve stare sotto leftcorner e sotto logo fixed */
+  z-index: 100;
 
   background-image: url("assets/bghead.png");
   background-repeat: repeat-x;
@@ -98,18 +100,22 @@ body{
   justify-content: flex-start;
 }
 
+/* LOGO: sopra leftcorner */
 #site-header .header-home{
+  position: fixed;
+  top: 0;
+  left: 24px;              /* distanza dal bordo sinistro */
+  height: var(--header-h);
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  height: 100%;
+  z-index: 4000;            /* sopra leftcorner */
 }
 
 #site-header .header-logo{
   height: var(--header-logo-h);
   width: auto;
   display: block;
-   z-index: 4000;
 }
 
 /* Link coerenti */
@@ -127,16 +133,13 @@ body{
   background: var(--bg-leftbar);
   color: var(--text-on-dark);
 
-  /* importante: permette allo "sbordo" di sovrastare anche fuori dalla colonna */
   overflow: visible;
-
-  /* se vuoi mantenere scroll solo per eventuale contenuto interno, fallo sui blocchi interni, non sulla sidebar */
   min-height: 0;
   padding: 0;
   position: relative;
 
-  /* stacking sopra al contenuto centrale */
-  z-index: 3000;
+  /* sopra il contenuto e sopra lo sfondo dell'header */
+  z-index: 2000;
 }
 
 #site-rightbar{
@@ -157,10 +160,13 @@ body{
   background: var(--bg-content);
   color: var(--text-on-light);
   padding: 16px;
+
+  /* stacca il testo dal bordo sinistro per non finire sotto il "fuoriuscire" da 200px */
+  padding-left: calc(16px + (200px - var(--leftbar-w))); /* 16 + 50 = 66px */
+
   overflow: auto;
   min-height: 0;
 
-  /* necessario per far funzionare bene lo stacking con z-index */
   position: relative;
   z-index: 1;
 }
@@ -178,7 +184,7 @@ body{
   align-items: center;
   padding: 0 16px;
 
-  z-index: 1000;
+  z-index: 100;
 }
 
 /* =========================
@@ -187,28 +193,22 @@ body{
 .left-corner-wrap{
   padding: 0;
   margin: 0;
-
-  /* riferimento per posizionamento assoluto dell'immagine */
   position: relative;
-
-  /* riserva (opzionale) uno spazio interno se vuoi evitare che contenuti inizino sotto l’immagine.
-     Se la barra è vuota, puoi lasciarlo a 0. */
   height: 0;
 }
 
+/* LEFTCORNER: sopra lo sfondo header, sotto il logo */
 .left-corner{
   display: block;
   width: 200px;
   max-width: none;
   height: auto;
 
-  /* questa è la parte che permette la sovrapposizione reale */
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 3000;
+  z-index: 3000; /* sopra header, sotto logo (4000) */
 
-  /* opzionale: evita che l'immagine intercetti click */
   pointer-events: none;
 }
 
@@ -422,5 +422,10 @@ body{
     padding-right: calc(16px + var(--peek-right));
     padding-top: 16px;
     padding-bottom: 16px;
+  }
+
+  /* Logo fixed: rispetta anche la linguetta sinistra */
+  #site-header .header-home{
+    left: calc(24px + var(--peek-left));
   }
 }
