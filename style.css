@@ -93,7 +93,8 @@ body {font-family: "Crimson Text", system-ui, -apple-system, Segoe UI, Roboto, A
 		z-index: 1100;			
 	}				
 	body.sidebar-open #site-sidebar{ transform: translateX(0); }				
-	#content > #btn-menu{				
+	#content > #btn-menu{		
+		padding: 16px;
 		display: inline-flex;			
 		align-items: center;			
 		justify-content: center;			
