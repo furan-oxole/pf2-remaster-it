@@ -21,6 +21,9 @@ html, body { height: 100%; margin: 0; }
   --text-on-light: #231F20;
 
   --header-logo-h: 90px;
+
+  /* mobile peek */
+  --peek: 24px;
 }
 
 body{
@@ -41,7 +44,6 @@ body{
 
   background: var(--bg-header);
   color: var(--text-on-dark);
-
   z-index: 1000;
 
   background-image: url("assets/bghead.png");
@@ -162,22 +164,24 @@ body{
 }
 
 /* =========================
-   LEFTBAR / RIGHTBAR
+   LEFTBAR / RIGHTBAR (desktop: sempre aperte)
 ========================= */
 #site-leftbar{
   background: var(--bg-leftbar);
   color: var(--text-on-dark);
-  padding: 16px;
   overflow: auto;
   min-height: 0;
+  padding: 0; /* padding gestito dai blocchi interni */
 }
 
 #site-rightbar{
   background: var(--bg-rightbar);
   color: var(--text-on-dark);
-  padding: 16px;
   overflow: auto;
   min-height: 0;
+  padding: 0; /* padding gestito dai blocchi interni */
+  display: flex;
+  flex-direction: column;
 }
 
 /* =========================
@@ -212,53 +216,8 @@ body{
 }
 
 /* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 900px){
-  #site-header{
-    grid-template-columns: 1fr auto 1fr;
-  }
-
-  #layout{
-    grid-template-columns: 1fr;
-  }
-
-  #site-leftbar{
-    position: fixed;
-    top: var(--header-h);
-    left: 0;
-    bottom: var(--footer-h);
-    width: var(--leftbar-w);
-    transform: translateX(-75%);
-    transition: transform 160ms ease;
-    z-index: 1100;
-  }
-
-  #site-rightbar{
-    position: fixed;
-    top: var(--header-h);
-    right: 0;
-    bottom: var(--footer-h);
-    width: var(--rightbar-w);
-    transform: translateX(75%);
-    transition: transform 160ms ease;
-    z-index: 1100;
-  }
-
-  body.leftbar-open #site-leftbar{ transform: translateX(0); }
-  body.rightbar-open #site-rightbar{ transform: translateX(0); }
-}
-/* =========================
    RIGHTBAR STRUTTURATA
 ========================= */
-
-#site-rightbar{
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-}
-
-/* BLOCCO SUPERIORE (barra larga) */
 .right-top{
   background: #145a32;
   border-bottom: 4px solid rgba(0,0,0,0.25);
@@ -284,7 +243,9 @@ body{
   cursor: pointer;
 }
 
-/* BLOCCO SEARCH */
+/* Desktop: non mostrare il bottone */
+#site-rightbar #btn-right{ display: none; }
+
 .right-search{
   padding: 12px 14px;
   font-size: 14px;
@@ -295,7 +256,6 @@ body{
   font-weight: 700;
 }
 
-/* BLOCCO INFERIORE (indice stretto) */
 .right-bottom{
   flex: 1;
   overflow: auto;
@@ -331,4 +291,86 @@ body{
 .right-index-list a:hover{
   background: rgba(255,255,255,0.08);
   padding-left: 8px;
+}
+
+/* =========================
+   LEFTBAR STRUTTURATA (senza bottoni)
+========================= */
+.left-bottom{
+  padding: 18px 16px;
+  background: var(--bg-leftbar);
+}
+
+.left-section-title{
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.left-nav-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.left-nav-list li{
+  margin-bottom: 8px;
+}
+
+.left-nav-list a{
+  display: block;
+  padding: 6px 4px;
+  text-decoration: none;
+  color: var(--text-on-dark);
+  transition: background 120ms ease, padding-left 120ms ease;
+}
+
+.left-nav-list a:hover{
+  background: rgba(255,255,255,0.08);
+  padding-left: 8px;
+}
+
+/* =========================
+   RESPONSIVE (mobile drawer con linguetta 24px)
+========================= */
+@media (max-width: 900px){
+  /* header più flessibile su mobile */
+  #site-header{
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  /* contenuto a piena larghezza, barre in overlay */
+  #layout{
+    grid-template-columns: 1fr;
+  }
+
+  /* LEFTBAR: resta 24px visibile, nessun tasto */
+  #site-leftbar{
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    bottom: var(--footer-h);
+    width: var(--leftbar-w);
+    transform: translateX(calc(-1 * (var(--leftbar-w) - var(--peek))));
+    transition: transform 160ms ease;
+    z-index: 1100;
+  }
+  body.leftbar-open #site-leftbar{ transform: translateX(0); }
+
+  /* RIGHTBAR: resta 24px visibile + tasto */
+  #site-rightbar{
+    position: fixed;
+    top: var(--header-h);
+    right: 0;
+    bottom: var(--footer-h);
+    width: var(--rightbar-w);
+    transform: translateX(calc(var(--rightbar-w) - var(--peek)));
+    transition: transform 160ms ease;
+    z-index: 1100;
+  }
+  body.rightbar-open #site-rightbar{ transform: translateX(0); }
+
+  /* Mobile: mostra il bottone della rightbar */
+  #site-rightbar #btn-right{ display: inline-flex; }
 }
