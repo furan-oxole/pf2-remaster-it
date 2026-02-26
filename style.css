@@ -8,7 +8,7 @@ html, body { height: 100%; margin: 0; }
   --header-h: 100px;
   --footer-h: 25px;
 
-  --leftbar-w: 250px;
+  --leftbar-w: 150px;
   --rightbar-w: 250px;
 
   --bg-header: #062D0E;
@@ -130,7 +130,9 @@ body{
 #site-leftbar{
   background: var(--bg-leftbar);
   color: var(--text-on-dark);
-  overflow: auto;
+  /* serve per far "sbordare" l'immagine leftcorner oltre la barra */
+  overflow-x: visible;
+  overflow-y: auto;
   min-height: 0;
   padding: 0; /* padding gestito dai blocchi interni */
   position: relative;
@@ -184,7 +186,8 @@ body{
 
 .left-corner{
   display: block;
-  max-width: 100%;
+  width: 200px;
+  max-width: none;
   height: auto;
 }
 
