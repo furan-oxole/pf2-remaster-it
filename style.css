@@ -23,7 +23,8 @@ html, body { height: 100%; margin: 0; }
   --header-logo-h: 90px;
 
   /* mobile peek */
-  --peek: 24px;
+  --peek-left: 24px;
+  --peek-right: 48px;
 }
 
 body{
@@ -142,6 +143,7 @@ body{
   padding: 0; /* padding gestito dai blocchi interni */
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* =========================
@@ -196,24 +198,23 @@ body{
 /* =========================
    RIGHTBAR STRUTTURATA
 ========================= */
-.right-top{
-  background: #145a32;
-  border-bottom: 4px solid rgba(0,0,0,0.25);
-}
-
-.right-top-bar{
-  height: 60px;
+/* =========================
+   RIGHTBAR: handle (solo mobile) + pannello
+========================= */
+.right-handle{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--header-h);
+  width: var(--peek-right);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 14px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 16px;
-  text-transform: uppercase;
+  justify-content: center;
+  background: var(--bg-rightbar);
+  z-index: 2;
 }
 
-.right-top-bar button{
+.right-handle button{
   border: 0;
   background: transparent;
   color: white;
@@ -221,13 +222,28 @@ body{
   cursor: pointer;
 }
 
-/* Desktop: non mostrare il bottone */
+.right-panel{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Desktop: non mostrare il bottone/handle */
 #site-rightbar #btn-right{ display: none; }
+#site-rightbar .right-handle{ display: none; }
+
+.right-top{
+  background: #145a32;
+  border-bottom: 4px solid rgba(0,0,0,0.25);
+}
 
 .right-search{
   padding: 12px 14px;
   font-size: 14px;
   opacity: 0.85;
+  background: #0e3f20; /* sfondo diverso dal resto della barra */
 }
 
 .right-search-title{
@@ -332,7 +348,7 @@ body{
     left: 0;
     bottom: 0;
     width: var(--leftbar-w);
-    transform: translateX(calc(-1 * (var(--leftbar-w) - var(--peek))));
+    transform: translateX(calc(-1 * (var(--leftbar-w) - var(--peek-left))));
     transition: transform 160ms ease;
     z-index: 1100;
   }
@@ -345,12 +361,39 @@ body{
     right: 0;
     bottom: 0;
     width: var(--rightbar-w);
-    transform: translateX(calc(var(--rightbar-w) - var(--peek)));
+    transform: translateX(calc(var(--rightbar-w) - var(--peek-right)));
     transition: transform 160ms ease;
     z-index: 1100;
   }
   body.rightbar-open #site-rightbar{ transform: translateX(0); }
 
-  /* Mobile: mostra il bottone della rightbar */
+  /* Mobile: mostra solo la linguetta con il bottone */
+  #site-rightbar .right-handle{ display: flex; }
   #site-rightbar #btn-right{ display: inline-flex; }
+
+  /* Contenuto nascosto finché la barra non è aperta */
+  body:not(.rightbar-open) #site-rightbar .right-panel{
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  body.rightbar-open #site-rightbar .right-panel{
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Evita che header/content/footer vengano coperti dalle linguette */
+  #site-header,
+  #site-footer{
+    padding-left: calc(12px + var(--peek-left));
+    padding-right: calc(12px + var(--peek-right));
+  }
+
+  #content{
+    padding-left: calc(16px + var(--peek-left));
+    padding-right: calc(16px + var(--peek-right));
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
 }
