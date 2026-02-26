@@ -104,7 +104,7 @@ body{
 #site-header .header-home{
   position: fixed;
   top: 0;
-  left: 24px;              /* distanza dal bordo sinistro */
+  left: calc(var(--leftbar-w) + 24px);              /* distanza dal bordo sinistro */
   height: var(--header-h);
   display: inline-flex;
   align-items: center;
