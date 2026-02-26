@@ -120,22 +120,22 @@ body{
 }
 
 /* =========================
-   LAYOUT (3 colonne: left / content / right)
-========================= */
-/* layout wrapper rimosso: ora gestito da #page */
-
-/* =========================
    LEFTBAR / RIGHTBAR (desktop: sempre aperte)
 ========================= */
 #site-leftbar{
   background: var(--bg-leftbar);
   color: var(--text-on-dark);
-  /* serve per far "sbordare" l'immagine leftcorner oltre la barra */
-  overflow-x: visible;
-  overflow-y: auto;
+
+  /* importante: permette allo "sbordo" di sovrastare anche fuori dalla colonna */
+  overflow: visible;
+
+  /* se vuoi mantenere scroll solo per eventuale contenuto interno, fallo sui blocchi interni, non sulla sidebar */
   min-height: 0;
-  padding: 0; /* padding gestito dai blocchi interni */
+  padding: 0;
   position: relative;
+
+  /* stacking sopra al contenuto centrale */
+  z-index: 900;
 }
 
 #site-rightbar{
@@ -158,6 +158,10 @@ body{
   padding: 16px;
   overflow: auto;
   min-height: 0;
+
+  /* necessario per far funzionare bene lo stacking con z-index */
+  position: relative;
+  z-index: 1;
 }
 
 /* =========================
@@ -182,6 +186,13 @@ body{
 .left-corner-wrap{
   padding: 0;
   margin: 0;
+
+  /* riferimento per posizionamento assoluto dell'immagine */
+  position: relative;
+
+  /* riserva (opzionale) uno spazio interno se vuoi evitare che contenuti inizino sotto l’immagine.
+     Se la barra è vuota, puoi lasciarlo a 0. */
+  height: 0;
 }
 
 .left-corner{
@@ -189,6 +200,15 @@ body{
   width: 200px;
   max-width: none;
   height: auto;
+
+  /* questa è la parte che permette la sovrapposizione reale */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+
+  /* opzionale: evita che l'immagine intercetti click */
+  pointer-events: none;
 }
 
 /* =========================
@@ -204,9 +224,6 @@ body{
   background: var(--bg-rightbar);
 }
 
-/* =========================
-   RIGHTBAR STRUTTURATA
-========================= */
 /* =========================
    RIGHTBAR: handle (solo mobile) + pannello
 ========================= */
