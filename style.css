@@ -248,3 +248,87 @@ body{
   body.leftbar-open #site-leftbar{ transform: translateX(0); }
   body.rightbar-open #site-rightbar{ transform: translateX(0); }
 }
+/* =========================
+   RIGHTBAR STRUTTURATA
+========================= */
+
+#site-rightbar{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+/* BLOCCO SUPERIORE (barra larga) */
+.right-top{
+  background: #145a32;
+  border-bottom: 4px solid rgba(0,0,0,0.25);
+}
+
+.right-top-bar{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.right-top-bar button{
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* BLOCCO SEARCH */
+.right-search{
+  padding: 12px 14px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.right-search-title{
+  font-weight: 700;
+}
+
+/* BLOCCO INFERIORE (indice stretto) */
+.right-bottom{
+  flex: 1;
+  overflow: auto;
+  padding: 18px 16px;
+  background: var(--bg-rightbar);
+}
+
+.right-section-title{
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.right-index-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.right-index-list li{
+  margin-bottom: 8px;
+}
+
+.right-index-list a{
+  display: block;
+  padding: 6px 4px;
+  text-decoration: none;
+  color: var(--text-on-dark);
+  transition: background 120ms ease, padding-left 120ms ease;
+}
+
+.right-index-list a:hover{
+  background: rgba(255,255,255,0.08);
+  padding-left: 8px;
+}
