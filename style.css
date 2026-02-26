@@ -137,7 +137,7 @@ body{
   padding: 16px;
 
   /* stacca il testo dal bordo per non finire sotto lo "sbordo" (200px - 150px = 50px) */
-  padding-left: calc(16px + (200px - var(--leftbar-w))); /* 66px */
+  padding-left: calc(16px + (var(--leftcorner-w) - var(--leftbar-w))); /* 66px */
 
   overflow: auto;
   min-height: 0;
