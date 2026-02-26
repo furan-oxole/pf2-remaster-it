@@ -3,8 +3,7 @@ html, body { height: 100%; margin: 0; }
 :root{					
 	--header-h: 100px;				
 	--footer-h: 50px;				
-	--sidebar-w: 250px;				
-	--gap: 16px;				
+	--sidebar-w: 250px;							
 	--bg-header: #062D0E;				
 	--bg-footer: #f5f5f5;				
 	--bg-sidebar: #062D0E;				
