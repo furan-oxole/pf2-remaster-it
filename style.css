@@ -188,11 +188,16 @@ body{
 .left-logo-link{
   position: fixed;
   top: 0;
-  left: calc(var(--leftbar-w) + 8px);
+
+  /* allineato alla larghezza del leftcorner,
+     24px prima del suo bordo destro */
+  left: calc(var(--leftcorner-w) - 24px);
+
   height: var(--header-h);
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
+
   z-index: 4000;
 }
 
@@ -410,6 +415,6 @@ body{
 
   /* logo: in mobile parte dopo la linguetta sinistra */
   .left-logo-link{
-    left: calc(24px + var(--peek-left) + 16px);
+    left: calc(var(--leftcorner-w) - 24px + var(--peek-left));
   }
 }
