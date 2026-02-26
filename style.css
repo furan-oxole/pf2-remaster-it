@@ -136,7 +136,7 @@ body{
   position: relative;
 
   /* stacking sopra al contenuto centrale */
-  z-index: 900;
+  z-index: 3000;
 }
 
 #site-rightbar{
