@@ -33,15 +33,48 @@ body{
 }
 
 /* =========================
+   PAGE GRID (3 colonne x 3 righe)
+   - sidebars: altezza completa (top + bottom)
+   - header/footer: solo colonna centrale
+========================= */
+#page{
+  height: 100vh;
+  display: grid;
+  grid-template-columns: var(--leftbar-w) 1fr var(--rightbar-w);
+  grid-template-rows: var(--header-h) 1fr var(--footer-h);
+  min-height: 0;
+}
+
+#site-leftbar{
+  grid-column: 1;
+  grid-row: 1 / 4;
+}
+
+#site-rightbar{
+  grid-column: 3;
+  grid-row: 1 / 4;
+}
+
+#site-header{
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#content{
+  grid-column: 2;
+  grid-row: 2;
+}
+
+#site-footer{
+  grid-column: 2;
+  grid-row: 3;
+}
+
+/* =========================
    HEADER (contenitore fisso + griglia a 3 colonne)
 ========================= */
 #site-header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   height: var(--header-h);
-
   background: var(--bg-header);
   color: var(--text-on-dark);
   z-index: 1000;
@@ -50,51 +83,20 @@ body{
   background-repeat: repeat-x;
   background-position: left top;
 
-  display: grid;
-  grid-template-columns: var(--leftbar-w) 1fr var(--rightbar-w);
-  align-items: center;
-
-  padding: 0;
-  overflow: visible;
-}
-
-/* Il partial dentro #site-header */
-#site-header .header-inner{
-  grid-column: 1 / -1;
-  height: 100%;
-  display: contents;
-}
-
-/* SINISTRA */
-#site-header .header-left{
-  grid-column: 1;
-  height: 100%;
-  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 0 12px;
 }
 
-/* immagine che scende */
-#site-header .header-art{
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: calc(var(--header-h) * 2.2);
-  width: auto;
-  z-index: 20;
-  pointer-events: none;
-}
-
-/* CENTRO (logo) */
-#site-header .header-center{
-  grid-column: 2;
+#site-header .header-inner{
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#site-header .header-center a{
+#site-header .header-home{
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -105,39 +107,6 @@ body{
   height: var(--header-logo-h);
   width: auto;
   display: block;
-}
-
-/* DESTRA (texture + badge) */
-#site-header .header-right{
-  grid-column: 3;
-  height: 100%;
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-end;
-  gap: 10px;
-  padding-right: 8px;
-}
-
-#site-header .header-texture{
-  width: 140px;
-  height: 100%;
-  background-image: url("assets/bghead.png");
-  background-repeat: repeat-x;
-  background-position: right top;
-  opacity: 0.35;
-}
-
-#site-header .header-badge{
-  height: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 26px;
-  font-weight: 700;
-  font-size: 34px;
-  background: #b38b2e;
-  color: #fff;
-  border-left: 4px solid rgba(0,0,0,0.25);
 }
 
 /* Link coerenti */
@@ -151,17 +120,7 @@ body{
 /* =========================
    LAYOUT (3 colonne: left / content / right)
 ========================= */
-#layout{
-  position: fixed;
-  top: var(--header-h);
-  bottom: var(--footer-h);
-  left: 0;
-  right: 0;
-
-  display: grid;
-  grid-template-columns: var(--leftbar-w) 1fr var(--rightbar-w);
-  min-height: 0;
-}
+/* layout wrapper rimosso: ora gestito da #page */
 
 /* =========================
    LEFTBAR / RIGHTBAR (desktop: sempre aperte)
@@ -172,6 +131,7 @@ body{
   overflow: auto;
   min-height: 0;
   padding: 0; /* padding gestito dai blocchi interni */
+  position: relative;
 }
 
 #site-rightbar{
@@ -199,10 +159,6 @@ body{
    FOOTER
 ========================= */
 #site-footer{
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
   height: var(--footer-h);
 
   background: var(--bg-footer);
@@ -213,6 +169,28 @@ body{
   padding: 0 16px;
 
   z-index: 1000;
+}
+
+/* =========================
+   LEFTBAR: immagine in alto a sinistra
+========================= */
+.left-corner-wrap{
+  padding: 0;
+  margin: 0;
+}
+
+.left-corner{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================
+   RIGHTBAR: gap alto come l'header
+========================= */
+.right-header-gap{
+  height: var(--header-h);
+  background: var(--bg-rightbar);
 }
 
 /* =========================
@@ -335,22 +313,24 @@ body{
    RESPONSIVE (mobile drawer con linguetta 24px)
 ========================= */
 @media (max-width: 900px){
-  /* header più flessibile su mobile */
-  #site-header{
-    grid-template-columns: 1fr auto 1fr;
+  /* pagina a colonna singola, barre in overlay */
+  #page{
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--header-h) 1fr var(--footer-h);
   }
 
-  /* contenuto a piena larghezza, barre in overlay */
-  #layout{
-    grid-template-columns: 1fr;
+  #site-header,
+  #content,
+  #site-footer{
+    grid-column: 1;
   }
 
   /* LEFTBAR: resta 24px visibile, nessun tasto */
   #site-leftbar{
     position: fixed;
-    top: var(--header-h);
+    top: 0;
     left: 0;
-    bottom: var(--footer-h);
+    bottom: 0;
     width: var(--leftbar-w);
     transform: translateX(calc(-1 * (var(--leftbar-w) - var(--peek))));
     transition: transform 160ms ease;
@@ -361,9 +341,9 @@ body{
   /* RIGHTBAR: resta 24px visibile + tasto */
   #site-rightbar{
     position: fixed;
-    top: var(--header-h);
+    top: 0;
     right: 0;
-    bottom: var(--footer-h);
+    bottom: 0;
     width: var(--rightbar-w);
     transform: translateX(calc(var(--rightbar-w) - var(--peek)));
     transition: transform 160ms ease;
