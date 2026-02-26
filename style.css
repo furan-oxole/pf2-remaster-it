@@ -137,7 +137,7 @@ body{
   padding: 16px;
 
   /* stacca il testo dal bordo per non finire sotto lo "sbordo" (200px - 150px = 50px) */
-  padding-left: calc(16px + (var(--leftcorner-w) - var(--leftbar-w))); /* 66px */
+  padding-left: calc(48px + (var(--leftcorner-w) - var(--leftbar-w))); /* 66px */
 
   overflow: auto;
   min-height: 0;
@@ -188,7 +188,7 @@ body{
 .left-logo-link{
   position: fixed;
   top: 0;
-  left: calc(var(--leftbar-w) + 24px);
+  left: calc(var(--leftbar-w) + 8px);
   height: var(--header-h);
   display: inline-flex;
   align-items: center;
@@ -402,7 +402,7 @@ body{
   }
 
   #content{
-    padding-left: calc(16px + var(--peek-left));
+    padding-left: calc(32px + var(--peek-left));
     padding-right: calc(16px + var(--peek-right));
     padding-top: 16px;
     padding-bottom: 16px;
@@ -410,6 +410,6 @@ body{
 
   /* logo: in mobile parte dopo la linguetta sinistra */
   .left-logo-link{
-    left: calc(24px + var(--peek-left));
+    left: calc(24px + var(--peek-left) + 16px);
   }
 }
