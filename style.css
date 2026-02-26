@@ -31,7 +31,6 @@ body {font-family: "Crimson Text", system-ui, -apple-system, Segoe UI, Roboto, A
 	background-image: url("assets/bghead.png");
   	background-repeat: repeat-x;
   	background-position: left top;
-  	background-size: auto 100px;
 }									
 #site-header .header-left{					
 	display: flex;				
