@@ -172,7 +172,7 @@ body{
 /* leftcorner: sopra lo sfondo header, sotto il logo */
 .left-corner{
   display: block;
-  width: 200px;
+  width: 120px;
   max-width: none;
   height: auto;
 
