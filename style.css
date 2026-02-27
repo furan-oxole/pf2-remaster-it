@@ -97,7 +97,7 @@ body{
 	display:flex;
 	flex-direction:column;
 	position:relative;
-	line-height:0.4;
+	line-height:1;
 }
 #content{
 	background:var(--bg-content);
