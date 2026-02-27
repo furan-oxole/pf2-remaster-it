@@ -3,7 +3,7 @@ html,body{height:100%;margin:0;}
 :root{
 	--header-h:200px;
 	--footer-h:50px;
-	--leftbar-w:200px;
+	--leftbar-w:250px;
 	--rightbar-w:320px;
 	--leftcorner-w:240px;
 	--logo-w:440px;
