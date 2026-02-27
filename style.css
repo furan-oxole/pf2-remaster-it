@@ -30,20 +30,11 @@ body{
 	grid-template-columns: var(--leftbar-w) 1fr var(--rightbar-w);																								
 	grid-template-rows: var(--header-h) 1fr var(--footer-h);																								
 	min-height: 0;																								
-}																									
-#site-leftbar{																									
-	grid-column: 1;																								
-	grid-row: 1 / 4;
-	background-image: url("assets/bgleft.png");
-    background-repeat: repeat-y;   
-    background-position: left top;    
-    background-size: auto; 
-}																									
+}																																																	
 #site-rightbar{																									
 	grid-column: 3;																								
 	grid-row: 1 / 4;	
 	border-left: var(--sidebar-border-w) solid var(--rightbar-border);
-}
 }																									
 #site-header{																									
 	grid-column: 2;																								
@@ -83,14 +74,19 @@ body{
 #site-footer a{																									
 	color: inherit;																								
 }																									
-#site-leftbar{																									
-	background: var(--bg-leftbar);																								
+#site-leftbar{																																																
 	color: var(--text-on-dark);																								
 	overflow: visible;																								
 	min-height: 0;																								
 	padding: 0;																								
 	position: relative;																								
-	z-index: 2000;																								
+	z-index: 2000;		
+	background-image: url("assets/bgleft.png");
+    background-repeat: repeat-y;   
+    background-position: left top;    
+    background-size: auto; 
+	grid-column: 1;																								
+	grid-row: 1 / 4;
 }																									
 #site-rightbar{																									
 	background: var(--bg-rightbar);																								
