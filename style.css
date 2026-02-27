@@ -75,10 +75,24 @@ body{
 }
 
 #site-rightbar{
-	grid-column: 3;
-	/* si ferma dopo la fine del contenuto (header + content), non arriva al footer */
-	grid-row: 1 / 3;
-	border-left: var(--sidebar-border-w) solid var(--rightbar-border);
+  grid-column: 3;
+  grid-row: 1 / 3;                 /* header + content (non footer) */
+  border-left: var(--sidebar-border-w) solid var(--rightbar-border);
+
+  background: var(--bg-rightbar);
+  color: var(--text-on-dark);
+
+  /* ✅ evita che si allunghi fino in fondo */
+  align-self: start;               /* <— questa è la chiave */
+  height: fit-content;             /* si ferma dopo le scritte */
+  max-height: calc(100vh - var(--footer-h)); /* sicurezza se il contenuto è lungo */
+  overflow: auto;
+
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 #site-header{
