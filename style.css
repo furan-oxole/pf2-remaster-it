@@ -50,28 +50,34 @@ body{
 ========================= */
 
 #site-rightbar-base{
-	grid-column: 3;
-	grid-row: 1 / 4;
-	position: relative;
-	overflow: hidden;
-	min-height: 0;
-	padding: 0;
-	/* sta sotto alla barra destra “vera” */
-	z-index: 0;
+  grid-column: 3;
+  grid-row: 1 / 4;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  padding: 0;
+  z-index: 0;
+
+  width: 100%;           /* ✅ forza l’aggancio al bordo destro */
+  justify-self: stretch; /* ✅ */
+  background: var(--bg-rightbar); /* ✅ fallback se l’immagine ha trasparenze */
 }
 
 /* sfondo specchiato (come la sinistra) senza specchiare il contenuto */
 #site-rightbar-base::before{
-	content: "";
-	position: absolute;
-	inset: 0;
-	background-image: url("assets/bgleft.png");
-	background-repeat: repeat-y;
-	background-position: right top;
-	background-size: auto;
-	transform: scaleX(-1);
-	transform-origin: center;
-	pointer-events: none;
+  content: "";
+  position: absolute;
+
+  /* ✅ “sborda” di 2px per eliminare qualsiasi fessura visiva */
+  inset: -2px;
+
+  background-image: url("assets/bgleft.png");
+  background-repeat: repeat-y;
+  background-position: right top;
+
+  transform: scaleX(-1);
+  transform-origin: center;
+  pointer-events: none;
 }
 
 #site-rightbar{
