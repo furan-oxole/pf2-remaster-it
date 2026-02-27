@@ -34,7 +34,11 @@ body{
 }																									
 #site-leftbar{																									
 	grid-column: 1;																								
-	grid-row: 1 / 4;	
+	grid-row: 1 / 4;
+	background-image: url("assets/bgleft.png");
+    background-repeat: repeat-y;   
+    background-position: left top;    
+    background-size: auto; 
 }																									
 #site-rightbar{																									
 	grid-column: 3;																								
