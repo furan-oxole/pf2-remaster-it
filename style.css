@@ -130,7 +130,16 @@ body{
 	left: 0;																								
 	z-index: 3000;																								
 	pointer-events: none;																								
-}																									
+}
+.right-corner{
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: var(--header-h);
+	width: auto;
+	z-index: 3500;
+	pointer-events: none;
+}
 .left-logo-link{																									
 	position: fixed;																								
 	top: 0;																								
