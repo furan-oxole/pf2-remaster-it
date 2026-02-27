@@ -1,30 +1,36 @@
-async function loadPartial(selector, url) {																									
-	const el = document.querySelector(selector);																								
-	if (!el) return;																								
-	try {																								
-		const res = await fetch(url, { cache: "no-store" });																							
-		if (!res.ok) throw new Error(`${res.status} ${res.statusText} - ${url}`);																							
-		el.innerHTML = await res.text();																							
-	} catch (err) {																								
-	el.textContent = `Errore caricando ${url}\n${err}`;																								
-	console.error(err);																								
-	}																								
-}																									
-document.addEventListener("DOMContentLoaded", async () => {																									
-	const depth = location.pathname.split("/").filter(Boolean).length - 1;																								
-	const base = depth > 0 ? "../".repeat(depth) : "./";																								
-	await loadPartial("#site-header", `${base}partials/header.html`);																								
-	await loadPartial("#site-leftbar", `${base}partials/leftbar.html`);																								
-	await loadPartial("#site-rightbar", `${base}partials/rightbar.html`);																								
-	document.addEventListener("click", (e) => {																								
-		const btnRight = e.target.closest("#btn-right, .btn-right");																							
-		if (btnRight) {																							
-			document.body.classList.toggle("rightbar-open");																						
-			return;																						
-		}																							
-		if (window.matchMedia("(max-width: 900px)").matches) {																							
-			const insideRight = e.target.closest("#site-rightbar");																						
-			if (!insideRight) document.body.classList.remove("rightbar-open");																						
-		}																							
-	});																								
-});																									
+(async()=>{
+	const load=async(id,url)=>{
+		const el=document.getElementById(id);
+		if(!el)return;
+		const r=await fetch(url,{cache:"no-store"});
+		el.innerHTML=await r.text();
+	};
+	const inject=()=>{
+		const src=document.getElementById("page-rightbar");
+		if(!src)return;
+		const slot=document.querySelector("#site-rightbar [data-rightbar-slot]");
+		if(!slot)return;
+		slot.innerHTML=src.innerHTML;
+	};
+	const wire=()=>{
+		const btn=document.getElementById("btn-right");
+		if(!btn)return;
+		btn.addEventListener("click",e=>{
+			e.preventDefault();
+			document.body.classList.toggle("rightbar-open");
+		});
+		document.addEventListener("click",e=>{
+			if(window.innerWidth>=900)return;
+			if(!document.body.classList.contains("rightbar-open"))return;
+			const rb=document.getElementById("site-rightbar");
+			if(rb&&!rb.contains(e.target)&&e.target!==btn)document.body.classList.remove("rightbar-open");
+		});
+	};
+	document.addEventListener("DOMContentLoaded",async()=>{
+		await load("site-header","partials/header.html");
+		await load("site-leftbar","partials/leftbar.html");
+		await load("site-rightbar","partials/rightbar.html");
+		inject();
+		wire();
+	});
+})();
