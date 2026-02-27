@@ -103,7 +103,7 @@ body{
 	background:var(--bg-content);
 	color:var(--text-on-light);
 	padding:16px;
-	padding-left:calc(48px + (var(--leftcorner-w) - var(--leftbar-w)));
+	padding-left:calc( + (var(--leftcorner-w) - var(--leftbar-w)));
 	overflow:auto;
 	min-height:0;
 	position:relative;
@@ -147,7 +147,7 @@ body{
 .left-logo-link{
 	position:fixed;
 	top:0;
-	left:calc(var(--leftcorner-w) - 24px);
+	left:calc(var(--leftcorner-w) - 48px);
 	height:var(--header-h);
 	display:inline-flex;
 	align-items:center;
@@ -165,14 +165,14 @@ body{
 	background:#d4af37;
 }
 .right-handle-gap{
-	height:48px;
+	height:;
 	background:var(--bg-rightbar);
 }
 .right-handle{
 	position:absolute;
 	top:var(--header-h);
 	left:0;
-	height:48px;
+	height:;
 	width:var(--peek-right);
 	display:flex;
 	align-items:center;
