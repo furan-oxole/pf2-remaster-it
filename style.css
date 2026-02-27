@@ -272,7 +272,7 @@ body{
 }
 .right-index-list a{
 	display:block;
-	padding:6px 4px;
+	padding:3px 4px;
 	text-decoration:none;
 	color:var(--text-on-dark);
 	transition:background 120ms ease,padding-left 120ms ease;
