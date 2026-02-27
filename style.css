@@ -4,7 +4,7 @@ html, body { height: 100%; margin: 0; }
 	--header-h: 100px;																								
 	--footer-h: 25px;																								
 	--leftbar-w: 100px;																								
-	--rightbar-w: 250px;																								
+	--rightbar-w: 160px;																								
 	--leftcorner-w: 120px;																								
 	--logo-w: 220px; /* opzionale: se vuoi forzare una larghezza fissa */																								
 	--bg-header: #062D0E;																								
