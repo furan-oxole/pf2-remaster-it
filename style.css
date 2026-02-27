@@ -16,7 +16,10 @@ html, body { height: 100%; margin: 0; }
 	--text-on-light: #231F20;																								
 	--header-logo-h: 90px;																								
 	--peek-left: 24px;																								
-	--peek-right: 48px;																								
+	--peek-right: 48px;		
+	--leftbar-border: #C8A951;
+	--rightbar-border: #E1C98A;
+	--sidebar-border-w: 3px;
 }																									
 body{																									
 	font-family: "Crimson Text", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;																								
@@ -32,11 +35,14 @@ body{
 }																									
 #site-leftbar{																									
 	grid-column: 1;																								
-	grid-row: 1 / 4;																								
+	grid-row: 1 / 4;	
+	border-right: var(--sidebar-border-w) solid var(--leftbar-border);
 }																									
 #site-rightbar{																									
 	grid-column: 3;																								
-	grid-row: 1 / 4;																								
+	grid-row: 1 / 4;	
+	border-left: var(--sidebar-border-w) solid var(--rightbar-border);
+}
 }																									
 #site-header{																									
 	grid-column: 2;																								
