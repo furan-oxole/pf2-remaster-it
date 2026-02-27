@@ -8,8 +8,7 @@ html, body { height: 100%; margin: 0; }
 	--leftcorner-w: 120px;																								
 	--logo-w: 220px; /* opzionale: se vuoi forzare una larghezza fissa */																								
 	--bg-header: #062D0E;																								
-	--bg-footer: #f5f5f5;																								
-	--bg-leftbar: #062D0E;																								
+	--bg-footer: #f5f5f5;																																															
 	--bg-rightbar: #062D0E;																								
 	--bg-content: #ffffff;																								
 	--text-on-dark: #ffffff;																								
