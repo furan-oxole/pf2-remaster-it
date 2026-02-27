@@ -26,11 +26,66 @@
 			if(rb&&!rb.contains(e.target)&&e.target!==btn)document.body.classList.remove("rightbar-open");
 		});
 	};
+	const norm=s=>(s||"").toString().trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9\s_-]/g," ").replace(/\s+/g," ").trim();
+	const uniq=a=>Array.from(new Set(a));
+	const tokenize=s=>uniq(norm(s).split(" ").filter(Boolean));
+	const loadIndex=async()=>{
+		try{
+			const r=await fetch("search-index.json",{cache:"no-store"});
+			if(!r.ok)return [];
+			const data=await r.json();
+			if(!Array.isArray(data))return [];
+			return data.map(x=>{
+				const title=(x&&x.title)||"";
+				const url=(x&&x.url)||"";
+				const tags=Array.isArray(x&&x.tags)?x.tags:[];
+				const tagsNorm=uniq(tags.map(t=>norm(t)).filter(Boolean));
+				return {title,url,tagsNorm};
+			}).filter(x=>x.title&&x.url);
+		}catch(e){
+			return [];
+		}
+	};
+	const wireSearch=async()=>{
+		const input=document.getElementById("search-input");
+		const box=document.getElementById("search-results");
+		if(!input||!box)return;
+		const index=await loadIndex();
+		const render=items=>{
+			box.innerHTML="";
+			if(!items.length)return;
+			const ul=document.createElement("ul");
+			ul.className="right-index-list";
+			items.forEach(it=>{
+				const li=document.createElement("li");
+				const a=document.createElement("a");
+				a.href=it.url;
+				const st=document.createElement("strong");
+				st.textContent=it.title;
+				a.appendChild(st);
+				li.appendChild(a);
+				ul.appendChild(li);
+			});
+			box.appendChild(ul);
+		};
+		const search=q=>{
+			const qTokens=tokenize(q);
+			if(!qTokens.length){box.innerHTML="";return;}
+			const scored=index.map(p=>{
+				let score=0;
+				for(const t of qTokens)if(p.tagsNorm.includes(t))score++;
+				return {title:p.title,url:p.url,score};
+			}).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||a.title.localeCompare(b.title,"it"));
+			render(scored.slice(0,30));
+		};
+		input.addEventListener("input",()=>search(input.value));
+	};
 	document.addEventListener("DOMContentLoaded",async()=>{
 		await load("site-header","partials/header.html");
 		await load("site-leftbar","partials/leftbar.html");
 		await load("site-rightbar","partials/rightbar.html");
 		inject();
 		wire();
+		await wireSearch();
 	});
 })();
