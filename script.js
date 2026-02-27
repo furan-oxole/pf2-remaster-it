@@ -68,12 +68,24 @@
 			});
 			box.appendChild(ul);
 		};
+		const scorePage=(p,qTokens)=>{
+			let score=0;
+			for(const qt of qTokens){
+				if(qt.length<2)continue;
+				let best=0;
+				for(const tag of p.tagsNorm){
+					if(tag===qt){best=2;break;}
+					if(best<1&&(tag.startsWith(qt)||tag.includes(qt)))best=1;
+				}
+				score+=best;
+			}
+			return score;
+		};
 		const search=q=>{
 			const qTokens=tokenize(q);
 			if(!qTokens.length){box.innerHTML="";return;}
 			const scored=index.map(p=>{
-				let score=0;
-				for(const t of qTokens)if(p.tagsNorm.includes(t))score++;
+				const score=scorePage(p,qTokens);
 				return {title:p.title,url:p.url,score};
 			}).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||a.title.localeCompare(b.title,"it"));
 			render(scored.slice(0,30));
