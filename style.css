@@ -326,7 +326,7 @@ body{
 		left:0;
 		bottom:0;
 		width:var(--leftbar-w);
-		transform:translateX(calc(-1 * (var(--leftbar-w) - var(--peek-left))));
+		transform:translateX(calc(-1 * (var(--leftbar-w) - var(--peek-left) - 24)));
 		transition:transform 160ms ease;
 		z-index:1100;
 	}
@@ -337,7 +337,7 @@ body{
 		right:0;
 		bottom:0;
 		width:var(--rightbar-w);
-		transform:translateX(calc(var(--rightbar-w) - var(--peek-right)));
+		transform:translateX(calc(var(--rightbar-w) - var(--peek-right) + 24));
 		transition:transform 160ms ease;
 		z-index:1100;
 	}
