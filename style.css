@@ -329,6 +329,9 @@ body{
 		transform:translateY(-90px);
 		transition:transform 160ms ease;
 	}
+	#content{
+		margin-top:-90px;
+	}
 	#site-leftbar{
 		position:fixed;
 		top:0;
