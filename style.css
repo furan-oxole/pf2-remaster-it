@@ -364,7 +364,7 @@ body{
 		padding-right:calc(12px + var(--peek-right));
 	}
 	#content{
-		top:calc(var(--header-h) - 90px);
+		top:calc(var(--header-h) + 90px);
 		padding-left:calc(32px + var(--peek-left));
 		padding-right:calc(16px + var(--peek-right));
 		padding-top:16px;
