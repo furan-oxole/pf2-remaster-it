@@ -14,8 +14,8 @@ html,body{height:100%;margin:0;}
 	--text-on-dark:#ffffff;
 	--text-on-light:#231F20;
 	--header-logo-h:180px;
-	--peek-left:120px;
-	--peek-right:180px;
+	--peek-left:24px;
+	--peek-right:48px;
 	--rightbar-border:#E1C98A;
 	--sidebar-border-w:6px;
 }
