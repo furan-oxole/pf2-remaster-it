@@ -324,15 +324,8 @@ body{
 		grid-column:1;
 	}
 	#site-header{
-		height:calc(var(--header-h) - 90px);
-		transform:none;
+		transform:translateY(-90px);
 		transition:transform 160ms ease;
-	}
-	.right-corner{
-		height:calc(var(--header-h) - 90px);
-	}
-	.left-logo-link{
-		height:calc(var(--header-h) - 90px);
 	}
 	#site-leftbar{
 		position:fixed;
