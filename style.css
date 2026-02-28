@@ -24,9 +24,11 @@ body{
 	font-family:"Crimson Text",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 	color:var(--text-on-light);
 	background:#e9e4d8;
+	overflow:hidden;
 }
 #page{
 	height:100vh;
+	height:100dvh;
 	display:grid;
 	grid-template-columns:var(--leftbar-w) 1fr var(--rightbar-w);
 	grid-template-rows:var(--header-h) 1fr var(--footer-h);
@@ -316,7 +318,7 @@ body{
 @media (max-width:900px){
 	#page{
 		grid-template-columns:1fr;
-		grid-template-rows:calc(var(--header-h) - 90px) 1fr var(--footer-h);
+		grid-template-rows:var(--header-h) 1fr var(--footer-h);
 	}
 	#site-header,
 	#content,
@@ -361,6 +363,13 @@ body{
 		opacity:1;
 		pointer-events:auto;
 	}
+	#site-footer{
+		position:fixed;
+		left:0;
+		right:0;
+		bottom:0;
+		z-index:1200;
+	}
 	#site-header,
 	#site-footer{
 		padding-left:calc(12px + var(--peek-left));
@@ -370,7 +379,7 @@ body{
 		padding-left:calc(32px + var(--peek-left));
 		padding-right:calc(16px + var(--peek-right));
 		padding-top:16px;
-		padding-bottom:16px;
+		padding-bottom:calc(16px + var(--footer-h));
 	}
 	.left-logo-link{
 		left:calc(var(--leftcorner-w) - 48px);
