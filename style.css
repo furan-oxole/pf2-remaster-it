@@ -321,7 +321,7 @@ body{
 		grid-column:1;
 	}
 	#site-header{
-		transform:translateY(-48);
+		transform:translateY(-96px);
 		transition:transform 160ms ease;
 	}
 	#site-leftbar{
@@ -371,7 +371,7 @@ body{
 	}
 	.left-logo-link{
 		left:calc(var(--leftcorner-w) - 48px);
-		top:-24px;
+		top:-48px;
 		transform:none;
 	}
 }
