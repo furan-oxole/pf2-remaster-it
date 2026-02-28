@@ -316,7 +316,7 @@ body{
 @media (max-width:900px){
 	#page{
 		grid-template-columns:1fr;
-		grid-template-rows:var(--header-h) 1fr var(--footer-h);
+		grid-template-rows:calc(var(--header-h) - 90px) 1fr var(--footer-h);
 	}
 	#site-header,
 	#content,
@@ -324,8 +324,15 @@ body{
 		grid-column:1;
 	}
 	#site-header{
-		transform:translateY(-90px);
+		height:calc(var(--header-h) - 90px);
+		transform:none;
 		transition:transform 160ms ease;
+	}
+	.right-corner{
+		height:calc(var(--header-h) - 90px);
+	}
+	.left-logo-link{
+		height:calc(var(--header-h) - 90px);
 	}
 	#site-leftbar{
 		position:fixed;
