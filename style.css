@@ -320,6 +320,10 @@ body{
 	#site-footer{
 		grid-column:1;
 	}
+	#site-header{
+		transform:translateY(-48);
+		transition:transform 160ms ease;
+	}
 	#site-leftbar{
 		position:fixed;
 		top:0;
@@ -366,7 +370,8 @@ body{
 		padding-bottom:16px;
 	}
 	.left-logo-link{
-		left:calc(var(--leftcorner-w) - 24px);
+		left:calc(var(--leftcorner-w) - 48px);
+		top:-24px;
 		transform:none;
 	}
 }
