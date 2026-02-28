@@ -363,13 +363,6 @@ body{
 		opacity:1;
 		pointer-events:auto;
 	}
-	#site-footer{
-		position:fixed;
-		left:0;
-		right:0;
-		bottom:0;
-		z-index:1200;
-	}
 	#site-header,
 	#site-footer{
 		padding-left:calc(12px + var(--peek-left));
@@ -379,7 +372,7 @@ body{
 		padding-left:calc(32px + var(--peek-left));
 		padding-right:calc(16px + var(--peek-right));
 		padding-top:16px;
-		padding-bottom:calc(16px + var(--footer-h));
+		padding-bottom:16px;
 	}
 	.left-logo-link{
 		left:calc(var(--leftcorner-w) - 48px);
