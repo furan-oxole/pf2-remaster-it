@@ -14,8 +14,8 @@ html,body{height:100%;margin:0;}
 	--text-on-dark:#ffffff;
 	--text-on-light:#231F20;
 	--header-logo-h:180px;
-	--peek-left:48px;
-	--peek-right:96px;
+	--peek-left:120px;
+	--peek-right:180px;
 	--rightbar-border:#E1C98A;
 	--sidebar-border-w:6px;
 }
@@ -326,7 +326,7 @@ body{
 		left:0;
 		bottom:0;
 		width:var(--leftbar-w);
-		transform:translateX(calc(-1 * (var(--leftbar-w) - var(--peek-left) - 24)));
+		transform:translateX(calc(-1 * (var(--leftbar-w) - var(--peek-left))));
 		transition:transform 160ms ease;
 		z-index:1100;
 	}
@@ -337,7 +337,7 @@ body{
 		right:0;
 		bottom:0;
 		width:var(--rightbar-w);
-		transform:translateX(calc(var(--rightbar-w) - var(--peek-right) + 24));
+		transform:translateX(calc(var(--rightbar-w) - var(--peek-right)));
 		transition:transform 160ms ease;
 		z-index:1100;
 	}
