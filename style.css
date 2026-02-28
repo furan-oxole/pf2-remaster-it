@@ -18,6 +18,7 @@ html,body{height:100%;margin:0;}
 	--peek-right:48px;
 	--rightbar-border:#E1C98A;
 	--sidebar-border-w:6px;
+	--right-handle-h:48px;
 }
 body{
 	font-family:"Crimson Text",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -165,14 +166,14 @@ body{
 	background:#d4af37;
 }
 .right-handle-gap{
-	height:;
+	height:var(--right-handle-h);
 	background:var(--bg-rightbar);
 }
 .right-handle{
 	position:absolute;
 	top:var(--header-h);
 	left:0;
-	height:;
+	height:var(--right-handle-h);
 	width:var(--peek-right);
 	display:flex;
 	align-items:center;
