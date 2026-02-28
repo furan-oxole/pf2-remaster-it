@@ -1,49 +1,6 @@
-[														
-	{													
-		title: "Pozione di Guarigione",												
-		url: "oggetti/pozione_di_guarigione.html",												
-		tags: [												
-			pozione,											
-			guarigione,											
-			cura,											
-			ampolla,											
-			bere,											
-			lancio											
-		]												
-	},													
-	{													
-		title: "Introduzione",												
-		url: "manuale_del_giocatore/introduzione.html",												
-		tags: [												
-			manuale,											
-			giocatore,											
-			introduzione,											
-			regole,											
-			base											
-		]												
-	},													
-	{													
-		title: "Classi",												
-		url: "manuale_del_giocatore/classi.html",												
-		tags: [												
-			classi,											
-			personaggio,											
-			ruoli,											
-			talenti,											
-			combattimento											
-		]												
-	},													
-	{													
-		title: "Incantesimi",												
-		url: "manuale_del_giocatore/incantesimi.html",												
-		tags: [												
-			incantesimi,											
-			magia,											
-			lancio,											
-			arcana,											
-			divina,											
-			occulta,											
-			primeva											
-		]												
-	}													
-]														
+[
+	{"title":"Pozione di Guarigione","url":"oggetti/pozione_di_guarigione.html","tags":["pozione","guarigione","cura","ampolla","bere","lancio"]},
+	{"title":"Introduzione","url":"manuale_del_giocatore/introduzione.html","tags":["manuale","giocatore","introduzione","regole","base"]},
+	{"title":"Classi","url":"manuale_del_giocatore/classi.html","tags":["classi","personaggio","ruoli","talenti","combattimento"]},
+	{"title":"Incantesimi","url":"manuale_del_giocatore/incantesimi.html","tags":["incantesimi","magia","lancio","arcana","divina","occulta","primeva"]}
+]
